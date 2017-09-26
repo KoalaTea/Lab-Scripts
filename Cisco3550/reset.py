@@ -29,13 +29,13 @@ while 'program load complete,' not in startup_text:
     startup_text += console.read(console.inWaiting())
 
 #send break command
-while 'rommon' not in startup_text:
+while 'switch' not in startup_text:
     console.send_break()
     startup_text += console.read(console.inWaiting())
     print(startup_text)
 
 #make sure we enter rommon and set config register
-if 'rommon' in startup_text:
+if 'switch' in startup_text:
     print("entered rommon")
     console.write('flash_init\r\n')
     print("flash_init")
